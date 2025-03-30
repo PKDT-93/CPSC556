@@ -1,0 +1,92 @@
+DeepSeek querying complete.
+  Successful queries: 136/136
+  API failures (rate limits, timeouts, errors): 0
+  New unique aliases added: 255
+🧠 Final dictionary size: 386
+Saving dictionary (386 terms) to cache file: malware_dictionary_cache_processed_data.txt
+Dictionary saved successfully.
+
+--- Setting up Aho-Corasick Automaton ---
+Automaton built successfully with 386 terms.
+
+--- Applying Text Preprocessing and Dictionary Matching (Baseline Feature) ---
+Applying Aho-Corasick matching to 'clean_text'...
+Aho-Corasick Matching: 100%|█████████████████████████████████████████████| 476/476 [00:00<00:00, 476602.70it/s] 
+Dictionary matching complete.
+Dictionary flag ('malware_flag') distribution:
+malware_flag
+1    0.703782
+0    0.296218
+Name: proportion, dtype: float64
+
+--- Generating NLP Context Features ---
+Applying keyword context check...
+Keyword Check: 100%|█████████████████████████████████████████████████████| 476/476 [00:00<00:00, 238159.22it/s] 
+Info Keyword flag ('has_info_keywords') distribution:
+has_info_keywords
+0    0.710084
+1    0.289916
+Name: proportion, dtype: float64
+Skipping NER context check as spaCy model is not loaded.
+
+--- Preparing True Labels from Flattened Entities ---
+Deriving true label based on 'malware' presence in label_1 to label_3...
+Deriving True Label: 100%|████████████████████████████████████████████████| 476/476 [00:00<00:00, 95152.45it/s] 
+Derived true label ('true_label') distribution:
+true_label
+0    0.527311
+1    0.472689
+Name: proportion, dtype: float64
+
+--- Splitting Data into Training and Test Sets ---
+Dataset Split: 380 training rows / 96 test rows
+Test set derived label distribution:
+true_label
+0    0.53125
+1    0.46875
+Name: proportion, dtype: float64
+
+--- Evaluating Dictionary-Only Baseline on Test Set ---
+
+Baseline Confusion Matrix:
+ [[30 21]
+ [ 1 44]]
+
+Baseline Classification Report:
+                  precision    recall  f1-score   support
+
+Not Malware (0)       0.97      0.59      0.73        51
+    Malware (1)       0.68      0.98      0.80        45
+
+       accuracy                           0.77        96
+      macro avg       0.82      0.78      0.77        96
+   weighted avg       0.83      0.77      0.76        96
+
+
+--- Preparing Features for NLP-Enhanced Classifier ---
+Features used for classifier: ['malware_flag', 'has_info_keywords']
+Context feature shapes: Train=(380, 2), Test=(96, 2)
+Scaling context features...
+
+--- Training NLP-Enhanced Classifier (Logistic Regression) ---
+Model training complete.
+
+--- Evaluating NLP-Enhanced Classifier on Test Set ---
+
+NLP-Enhanced Model Confusion Matrix:
+ [[30 21]
+ [ 1 44]]
+
+NLP-Enhanced Model Classification Report:
+                  precision    recall  f1-score   support
+
+Not Malware (0)       0.97      0.59      0.73        51
+    Malware (1)       0.68      0.98      0.80        45
+
+       accuracy                           0.77        96
+      macro avg       0.82      0.78      0.77        96
+   weighted avg       0.83      0.77      0.76        96
+
+
+--- Saving Combined Results ---
+Results saved successfully to: pipeline_results_processed_data_nlp_context.json
