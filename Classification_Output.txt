@@ -1,0 +1,55 @@
+Attempted to load environment variables from .env file.
+Config and Utils loaded.
+DeepSeek client initialized.
+--- Starting Malware Detection Pipeline ---
+
+--- Checking/Downloading Kaggle dataset: ramoliyafenil/text-based-cyber-threat-detection ---
+Executing command: kaggle datasets download -d ramoliyafenil/text-based-cyber-threat-detection -p ./kaggle_data --unzip
+Dataset downloaded and unzipped successfully to ./kaggle_data
+
+--- Loading Main Dataset from: ./kaggle_data/cyber-threat-intelligence_all.csv ---
+Main dataset loaded successfully. Shape: (19940, 10)
+
+--- Building Malware Dictionary ---
+Scanning entities: 100%|████████████████████████████████████████████████████████████████████| 19940/19940 [00:01<00:00, 19309.49it/s]
+Found 450 unique potential malware names in 'entities'.
+Added 418 initial normalized names (>= 4 chars).
+Querying DeepSeek for aliases for 450 unique names...
+Querying DeepSeek: 100%|███████████████████████████████████████████████████████████████████████████| 450/450 [46:15<00:00,  6.17s/it]
+DeepSeek querying complete. Encountered 0 API issues.
+🧠 Final Expanded dictionary size: 1126
+
+--- Setting up Aho-Corasick Automaton ---
+Automaton built successfully.
+
+--- Applying Preprocessing and Dictionary Matching ---
+Applying Aho-Corasick matching...
+Matching complete.
+
+--- Preparing Labels and Splitting Data ---
+Label distribution in full dataset:
+true_label
+0    0.904162
+1    0.095838
+Name: proportion, dtype: float64
+
+Dataset Split: 15952 training / 3988 test
+
+--- Evaluating Detection on Test Set ---
+
+Confusion Matrix:
+ [[2581 1025]
+ [   2  380]]
+
+Classification Report:
+               precision    recall  f1-score   support
+
+ Not Malware       1.00      0.72      0.83      3606
+     Malware       0.27      0.99      0.43       382
+
+    accuracy                           0.74      3988
+   macro avg       0.63      0.86      0.63      3988
+weighted avg       0.93      0.74      0.79      3988
+
+
+--- Pipeline Finished ---

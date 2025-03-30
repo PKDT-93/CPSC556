@@ -1,0 +1,8 @@
+pandas
+scikit-learn
+ahocorasick-py
+openai
+kaggle
+tqdm
+python-dotenv
+spacy

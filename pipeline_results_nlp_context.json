@@ -1,0 +1,145 @@
+{
+    "run_timestamp_start": "2025-03-29T18:36:02.232728",
+    "run_timestamp_end": "2025-03-29T18:37:24.647029",
+    "duration_seconds": 82.41,
+    "config": {
+        "test_set_size": 0.2,
+        "random_state": 42,
+        "min_term_length": 4,
+        "dictionary_cache_file": "malware_dictionary_cache.txt",
+        "deepseek_enabled": true,
+        "nlp_context_features_config": {
+            "info_keywords": [
+                "report",
+                "analysis",
+                "threat intelligence",
+                "vulnerability",
+                "advisory",
+                "bulletin",
+                "detected",
+                "detection",
+                "signature",
+                "research",
+                "blog post",
+                "news",
+                "article",
+                "mitigation",
+                "indicator",
+                "ioc",
+                "campaign analysis",
+                "security brief",
+                "overview",
+                "summary",
+                "presentation",
+                "webinar"
+            ],
+            "info_ner_labels": [
+                "ORG",
+                "PRODUCT",
+                "GPE",
+                "PERSON"
+            ],
+            "spacy_model_used": "en_core_web_sm"
+        },
+        "classifier_used": "LogisticRegression"
+    },
+    "dataset_info": {
+        "csv_path": "./kaggle_data/cyber-threat-intelligence_all.csv",
+        "initial_rows": 19940,
+        "train_rows": 15952,
+        "test_rows": 3988,
+        "full_set_label_dist": {
+            "0": 0.9041624874623871,
+            "1": 0.09583751253761284
+        }
+    },
+    "dictionary_info": {
+        "size": 1097,
+        "loaded_from_cache": true
+    },
+    "dictionary_only_baseline_evaluation": {
+        "confusion_matrix": [
+            [
+                2606,
+                1000
+            ],
+            [
+                2,
+                380
+            ]
+        ],
+        "classification_report_dict": {
+            "Not Malware (0)": {
+                "precision": 0.9992331288343558,
+                "recall": 0.7226844148641154,
+                "f1-score": 0.8387512069520437,
+                "support": 3606.0
+            },
+            "Malware (1)": {
+                "precision": 0.2753623188405797,
+                "recall": 0.9947643979057592,
+                "f1-score": 0.43132803632236094,
+                "support": 382.0
+            },
+            "accuracy": 0.7487462387161484,
+            "macro avg": {
+                "precision": 0.6372977238374677,
+                "recall": 0.8587244063849373,
+                "f1-score": 0.6350396216372023,
+                "support": 3988.0
+            },
+            "weighted avg": {
+                "precision": 0.9298954534538085,
+                "recall": 0.7487462387161484,
+                "f1-score": 0.7997252161846067,
+                "support": 3988.0
+            }
+        },
+        "classification_report_string": "                 precision    recall  f1-score   support\n\nNot Malware (0)       1.00      0.72      0.84      3606\n    Malware (1)       0.28      0.99      0.43       382\n\n       accuracy                           0.75      3988\n      macro avg       0.64      0.86      0.64      3988\n   weighted avg       0.93      0.75      0.80      3988\n"
+    },
+    "nlp_enhanced_classifier_evaluation": {
+        "features_used": [
+            "malware_flag",
+            "has_info_keywords",
+            "has_info_entities"
+        ],
+        "confusion_matrix": [
+            [
+                2606,
+                1000
+            ],
+            [
+                2,
+                380
+            ]
+        ],
+        "classification_report_dict": {
+            "Not Malware (0)": {
+                "precision": 0.9992331288343558,
+                "recall": 0.7226844148641154,
+                "f1-score": 0.8387512069520437,
+                "support": 3606.0
+            },
+            "Malware (1)": {
+                "precision": 0.2753623188405797,
+                "recall": 0.9947643979057592,
+                "f1-score": 0.43132803632236094,
+                "support": 382.0
+            },
+            "accuracy": 0.7487462387161484,
+            "macro avg": {
+                "precision": 0.6372977238374677,
+                "recall": 0.8587244063849373,
+                "f1-score": 0.6350396216372023,
+                "support": 3988.0
+            },
+            "weighted avg": {
+                "precision": 0.9298954534538085,
+                "recall": 0.7487462387161484,
+                "f1-score": 0.7997252161846067,
+                "support": 3988.0
+            }
+        },
+        "classification_report_string": "                 precision    recall  f1-score   support\n\nNot Malware (0)       1.00      0.72      0.84      3606\n    Malware (1)       0.28      0.99      0.43       382\n\n       accuracy                           0.75      3988\n      macro avg       0.64      0.86      0.64      3988\n   weighted avg       0.93      0.75      0.80      3988\n"
+    }
+}
