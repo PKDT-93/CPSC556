@@ -155,8 +155,6 @@ def extract_graph_features(row: pd.Series, max_entity_index: int) -> pd.Series:
         # print(f"Warning: Error building graph for row {row.name}: {e}") # Debug
         # Return default values if graph building fails
         return pd.Series([max_malware_degree, total_edges], index=[cfg.MAX_MALWARE_DEGREE_FEATURE, cfg.TOTAL_EDGES_FEATURE])
-    print(f"Row {row.name}: Graph Edges: {list(G.edges())}")
-    print(f"Row {row.name}: Graph Nodes: {list(G.nodes())}")
     # 3. Find malware nodes and calculate max degree
     malware_nodes_in_graph = set()
     for i in range(1, max_entity_index + 1):
@@ -167,9 +165,7 @@ def extract_graph_features(row: pd.Series, max_entity_index: int) -> pd.Series:
            isinstance(row[label_col], str) and row[label_col].lower() == 'malware':
             try:
                 entity_id = int(row[id_col]) # Ensure ID is integer
-                print(f"Entity ID {entity_id}")
                 # Check if this entity ID is actually a node in the graph derived from relations
-                print(f"G has_node entity ID {G.has_node(entity_id)}")
                 if G.has_node(entity_id):
                     malware_nodes_in_graph.add(entity_id)
             except (ValueError, TypeError):

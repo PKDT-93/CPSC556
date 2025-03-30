@@ -1,7 +1,7 @@
 {
-    "run_timestamp_start": "2025-03-30T16:45:01.578666",
-    "run_timestamp_end": "2025-03-30T16:45:05.214225",
-    "duration_seconds": 3.64,
+    "run_timestamp_start": "2025-03-30T16:55:49.765123",
+    "run_timestamp_end": "2025-03-30T16:55:53.266969",
+    "duration_seconds": 3.5,
     "config": {
         "dataset_csv": "Cyber-Threat-Intelligence-Custom-Data_new_processed.csv",
         "test_set_size": 0.2,
