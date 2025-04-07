@@ -40,7 +40,9 @@ INFO_KEYWORDS = [
     'report', 'analysis', 'threat intelligence', 'vulnerability', 'advisory',
     'bulletin', 'detected', 'detection', 'signature', 'research', 'blog post',
     'news', 'article', 'mitigation', 'indicator', 'ioc', 'campaign analysis',
-    'security brief', 'overview', 'summary', 'presentation', 'webinar'
+    'security brief', 'overview', 'summary', 'presentation', 'webinar', "biopass", "rat", "malware", "backdoor", "exe", "figure", "loader", "used", "win64", "version",
+    "file", "code", "ransomware", "attacks", "malicious", "attack", "samples", "family", "using",
+    "command", "group", "variant", "use", "plugx", "protux", "anel", "new", "server", "cyclops", "infection"
 ]
 INFO_NER_LABELS = [
     'ORG', 'PRODUCT', 'GPE', 'PERSON'
